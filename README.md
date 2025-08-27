@@ -1,98 +1,119 @@
-**Shoreline Wave Tracking and Wave Period Estimation**
+# Shoreline Wave Tracking and Wave Period Estimation
 
-This repository contains a Jupyter notebook that provides an end-to-end pipeline for tracking shoreline waves and estimating the wave period (Tp) from video footage. The pipeline utilizes computer vision and signal processing techniques to extract features from video frames and compute wave periods using various signal processing methods.
-Features
+This repository contains a **Jupyter notebook** that provides an end-to-end pipeline for tracking shoreline waves and estimating the **wave period (Tp)** from video footage. The pipeline utilizes **computer vision** and **signal processing** techniques to extract features from video frames and compute wave periods using various estimation methods.
 
-_Video Processing:_
+## Features
 
-Loads video files and processes frames for analysis.
-Optional video stabilization using ECC-based methods for improved tracking.
+### Video Processing
 
-_Region of Interest (ROI) Detection:_
+* Loads video files and processes frames for analysis.
+* Optional **video stabilization** using **ECC-based methods** for improved tracking.
 
-Automatically detects and selects the water region in each frame for wave analysis.
-Supports both automatic and manual ROI selection.
+### Region of Interest (ROI) Detection
 
-_Optical Flow Calculation:_
+* **Automatic detection** of the water region in each frame for wave analysis.
+* Supports both **automatic** and **manual** ROI selection.
 
-Computes optical flow between consecutive frames using the Farnebäck method to estimate motion.
-Optionally smooths the flow to improve accuracy in wave tracking.
+### Optical Flow Calculation
 
-_Wave Period Estimation:_
+* Computes **optical flow** between consecutive frames using the **Farnebäck method** to estimate motion.
+* Optionally smooths the flow to improve accuracy in wave tracking.
 
-1. Extracts wave period (Tp) using multiple techniques:
-2. Zero-crossing method (Tz).
-3. Power Spectral Density (PSD).
-4. Autocorrelation Function (ACF).
-5. Fused Tp from the above methods.
-6. Performs rolling window analysis to compute time-varying wave periods.
+### Wave Period Estimation
 
-_Visualization:_
+The notebook extracts wave period (`Tp`) using multiple signal processing techniques:
 
-Overlays estimated wave periods on the video, with an option to save and download the processed video and results.
-Plots the estimated wave periods over time.
+1. **Zero-crossing method** (`Tz`).
+2. **Power Spectral Density** (`PSD`).
+3. **Autocorrelation Function** (`ACF`).
+4. **Fused Tp** from the above methods.
+5. Performs **rolling window analysis** to compute **time-varying wave periods**.
 
-_Output:_
+### Visualization
 
-Generates a CSV file with the estimated wave periods and their confidence levels.
-Saves the processed video with wave period annotations.
+* Overlays **estimated wave periods** on the video.
+* Provides an option to **save and download** the processed video and results.
+* Plots the **estimated wave periods** over time.
 
-_Requirements_
+### Output
+
+* Generates a **CSV file** containing the estimated wave periods (`Tp`) and their **confidence levels**.
+* Saves the processed video with **wave period annotations** on each frame.
+
+## Requirements
 
 This project requires the following Python libraries:
 
-a. cv2 (OpenCV)
-b. torch (PyTorch)
-c. numpy
-d. matplotlib
-e. scipy
-f. transformers
-g. tqdm
-h. pandas
+* `cv2` (OpenCV)
+* `torch` (PyTorch)
+* `numpy`
+* `matplotlib`
+* `scipy`
+* `transformers`
+* `tqdm`
+* `pandas`
 
-_Install these dependencies using:_
+You can install all dependencies by running the following command:
 
+```bash
 pip install -r requirements.txt
-Alternatively, you can install each package individually via pip:
+```
 
+Alternatively, you can install each package individually using `pip`:
+
+```bash
 pip install opencv-python torch numpy matplotlib scipy transformers tqdm pandas
+```
 
-**How to Use**
+## How to Use
 
-_Upload Video:_
+### 1. Upload Video
 
-Upload a video file containing shoreline footage. The notebook will automatically detect frames from the video.
-_Region of Interest (ROI) Selection:_
-The ROI will be automatically detected, or you can manually select the region that contains the water.
+* Upload a video file containing shoreline footage.
+* The notebook will automatically detect frames from the video.
 
-_Wave Period Estimation:_
-The notebook will extract wave periods using multiple signal processing methods and generate a CSV file with the results.
+### 2. Region of Interest (ROI) Selection
 
-_Visualization:_
-The results will be overlaid on the video, and the processed video will be saved.
-You can download the video and CSV file for further analysis.
+* The ROI will be automatically detected, or you can manually select the region containing the water.
 
-**Example Output**
+### 3. Wave Period Estimation
 
-_After running the pipeline, you will get:_
+* The notebook will extract wave periods using multiple signal processing methods.
+* A **CSV file** with the results will be generated.
 
-_Rolling Wave Period Results: A CSV file containing:_
+### 4. Visualization
 
-_Timestamp_
-1. Tp_zero (Zero-crossing period)
-2. Tp_psd (PSD period)
-3. Tp_acf (ACF period)
-4. Tp_fused (Fused period)
-5. Confidence
+* The results will be overlaid on the video.
+* The processed video can be saved and downloaded along with the **CSV file** for further analysis.
 
-**Processed Video: A video with wave period annotations on each frame.**
+## Example Output
 
-**Use Cases**
+After running the pipeline, you will get:
 
-_This notebook is useful for:_
+### 1. Rolling Wave Period Results (CSV File)
 
-Oceanography & Coastal Research: Estimating wave characteristics in shoreline and coastal environments.
+This file contains the following columns:
 
-Video Analysis: Applying computer vision techniques to estimate wave periods.
+* `Timestamp`
+* `Tp_zero` (Zero-crossing period)
+* `Tp_psd` (PSD period)
+* `Tp_acf` (ACF period)
+* `Tp_fused` (Fused period)
+* `Confidence`
 
-Environmental Monitoring: Tracking wave behavior in natural settings.
+### 2. Processed Video
+
+A video with **wave period annotations** on each frame.
+
+## Use Cases
+
+This notebook is useful for:
+
+* **Oceanography & Coastal Research**: Estimating wave characteristics in shoreline and coastal environments.
+* **Video Analysis**: Applying computer vision techniques to estimate wave periods.
+* **Environmental Monitoring**: Tracking wave behavior in natural settings.
+
+## License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+

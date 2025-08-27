@@ -1,0 +1,30 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment files (e.g., virtualenv, conda)
+venv/
+.env/
+*.env
+
+# Ignore logs
+*.log
+
+# Ignore system files (e.g., macOS, Windows, etc.)
+.DS_Store
+Thumbs.db
+
+# Ignore large files
+*.mp4
+*.avi
+*.zip
+*.tar.gz
+
+# Ignore data files
+*.csv
